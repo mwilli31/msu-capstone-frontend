@@ -1,0 +1,18 @@
+---
+applications:
+  - name: train-insights
+    memory: 64M
+    buildpack: nodejs_buildpack
+    command: node server/app.js
+    path: dist
+services:
+ - msu-uaa
+ - msu-ts
+ - msu-asset
+env:
+    node_env: cloud
+    uaa_service_label : predix-uaa
+    # Add these values for authentication in the cloud
+    clientId: msu-client-1
+    base64ClientCredential: bXN1LWNsaWVudC0xOk1TVTEyMw==
+    #windServiceURL: "{URL of the microservice <your-name>-winddata-timeseries-service}, e.g.  https://your-name-winddata-timeseries-service.run.asw-usw02-pr.predix.io"
